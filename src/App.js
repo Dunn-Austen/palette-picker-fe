@@ -3,17 +3,18 @@ import './App.css';
 
 const App = () => {
 
-
   const [fakePalettes, increaseFakePalettes] = useState([]);
-  //the useState argument represents the actual starting state for the listed property (empty array)
+
+  //the 1st argument in useState represents the actual starting state for the listed property (empty array)
+  //the 2nd argument in useState represents a function that updates the 'state value'
   //fakePalette is just a placeholder for practice purposes
 
   //ComponentDidMount is replaced with useEffect
   useEffect(() => {
-    //Space for imported  Apicalls?
+    //We'd run our imported FETCHES here (imported from APIcalls)
   });
 
-  //Example function - likely passed to another component in the return clause below as props 
+  //Example function - likely passed to another component in the return clause below as props
   //const addAFakePalette = (newFakePalette) => {
   //   increaseFakePalettes([...fakePalettes, newFakePalette]);
   // }
