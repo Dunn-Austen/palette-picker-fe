@@ -16,5 +16,6 @@ const ColorCard = props => {
   );
 }
 
+export default ColorCard;
 
 //Button requires onClick{() => } functionality for freezing color choice
