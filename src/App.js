@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+
+
+  const [fakePalettes, increaseFakePalettes] = useState([]);
+  //the useState argument represents the actual starting state for the listed property (empty array)
+  //fakePalette is just a placeholder for practice purposes
+
+  //ComponentDidMount is replaced with useEffect
+  useEffect(() => {
+    //Space for imported  Apicalls?
+  });
+
+  //Example function - likely passed to another component in the return clause below as props 
+  //const addAFakePalette = (newFakePalette) => {
+  //   increaseFakePalettes([...fakePalettes, newFakePalette]);
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main className='app'>
+      <header className='app-header'>
+        <p>PLACEHOLDER TEXT</p>
       </header>
-    </div>
+      <section className='content'>
+        <p>PLACEHOLDER TEXT</p>
+      </section>
+    </main>
   );
 }
 
