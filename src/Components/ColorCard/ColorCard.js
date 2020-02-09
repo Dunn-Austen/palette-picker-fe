@@ -1,9 +1,8 @@
-import React from 'react'
-import './ColorCard.css'
+import React from 'react';
+import './ColorCard.css';
+import PropTypes from 'prop-types';
 
-const ColorCard = (props) => {
-  const { hexCode, isSaved, setIsSaved } = props;
-  console.log(hexCode);
+const ColorCard = ({ hexCode, isSaved, setIsSaved }) => {
 
   const toggleSavedStatus = (isSaved) => {
     if (isSaved) {
@@ -27,4 +26,8 @@ const ColorCard = (props) => {
 
 export default ColorCard;
 
-//Button requires onClick{() => } functionality for freezing color choice
+ColorCard.propTypes = {
+  hexCode: PropTypes.string,
+  isSaved: PropTypes.bool,
+  setIsSaved: PropTypes.func
+}

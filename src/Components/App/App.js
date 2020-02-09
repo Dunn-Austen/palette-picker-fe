@@ -3,7 +3,7 @@ import './App.css';
 import ColorContainer from '../ColorContainer/ColorContainer';
 import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
 
-function App() {
+const App = () => {
 
   let [paletteColor_1, setPaletteColor_1] = useState('#000000');
   let [paletteColor_2, setPaletteColor_2] = useState('#bbbbbb');
@@ -46,7 +46,7 @@ function App() {
           setIsSavedFunctions={{setIsSaved_1, setIsSaved_2, setIsSaved_3, setIsSaved_4, setIsSaved_5}}
         />
         <button className='generate-palette' onClick={() => generateRandomColors()}>
-          Generate New Palette
+          Generate New Colors
         </button>
       </section>
     </main>

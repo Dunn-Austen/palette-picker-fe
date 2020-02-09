@@ -1,6 +1,7 @@
 import React from 'react';
 import ColorCard from '../ColorCard/ColorCard';
 import './ColorContainer.css';
+import PropTypes from 'prop-types';
 
 const ColorContainer = ({paletteColors, isSavedStatuses, setIsSavedFunctions}) => {
   let { paletteColor_1, paletteColor_2, paletteColor_3, paletteColor_4, paletteColor_5 } = paletteColors;
@@ -36,3 +37,9 @@ const ColorContainer = ({paletteColors, isSavedStatuses, setIsSavedFunctions}) =
 }
 
 export default ColorContainer;
+
+ColorContainer.propTypes = {
+  paletteColors: PropTypes.array,
+  isSavedStatuses: PropTypes.array,
+  setIsSavedFunctions: PropTypes.array
+}
