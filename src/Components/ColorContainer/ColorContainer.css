@@ -1,6 +1,7 @@
 .color-container {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  height: 80%;
   justify-content: center;
 }
