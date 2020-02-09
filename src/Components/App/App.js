@@ -17,8 +17,6 @@ function App() {
   let [isSaved_4, setIsSaved_4] = useState(false);
   let [isSaved_5, setIsSaved_5] = useState(false);
 
-  useEffect(() => generateRandomColors(), []);
-
   const generateRandomColors = () => {
     if (!isSaved_1) {
       setPaletteColor_1('#'+Math.floor(Math.random()*16777215).toString(16))
@@ -36,6 +34,8 @@ function App() {
       setPaletteColor_5('#'+Math.floor(Math.random()*16777215).toString(16))
     };
   }
+
+  useEffect(() => generateRandomColors(), []);
 
   return (
     <main className='app'>
