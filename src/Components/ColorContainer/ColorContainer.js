@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import ColorCard from './ColorCard';
+import ColorCard from '../ColorCard/ColorCard';
 import './ColorContainer.css';
 
 const ColorContainer = ({paletteColors, isSavedStatuses, setIsSavedFunctions}) => {

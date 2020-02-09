@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import ColorContainer from './ColorContainer';
-import SavePaletteForm from './SavePaletteForm';
+import ColorContainer from '../ColorContainer/ColorContainer';
+import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
 
 const App = () => {
 
