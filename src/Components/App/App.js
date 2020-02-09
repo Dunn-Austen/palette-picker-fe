@@ -24,16 +24,16 @@ function App() {
       setPaletteColor_1('#'+Math.floor(Math.random()*16777215).toString(16))
     };
     if (!isSaved_2) {
-      setPaletteColor_1('#'+Math.floor(Math.random()*16777215).toString(16))
+      setPaletteColor_2('#'+Math.floor(Math.random()*16777215).toString(16))
     };
     if (!isSaved_3) {
-      setPaletteColor_1('#'+Math.floor(Math.random()*16777215).toString(16))
+      setPaletteColor_3('#'+Math.floor(Math.random()*16777215).toString(16))
     };
     if (!isSaved_4) {
-      setPaletteColor_1('#'+Math.floor(Math.random()*16777215).toString(16))
+      setPaletteColor_4('#'+Math.floor(Math.random()*16777215).toString(16))
     };
     if (!isSaved_5) {
-      setPaletteColor_1('#'+Math.floor(Math.random()*16777215).toString(16))
+      setPaletteColor_5('#'+Math.floor(Math.random()*16777215).toString(16))
     };
   }
 
