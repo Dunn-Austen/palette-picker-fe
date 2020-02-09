@@ -1,13 +1,13 @@
 import React from 'react'
 import './ColorCard.css'
 
-const ColorCard = props => {
-  const { hexColor } = props;
-
+const ColorCard = (props) => {
+  const { hexCode, isSaved, setIsSaved } = props;
+  console.log(hexCode);
   return (
-    <article className='color-card' style={{backgroundColor: `#${hexColor}`}}>
+    <article className='color-card' style={{backgroundColor: hexCode}}>
       <h1 className='hex-display'>
-        {hexColor}
+        {hexCode}
       </h1>
       <button>
         Freeze
