@@ -18,7 +18,7 @@ const ColorCard = (props) => {
       <h1 className='hex-display'>
         {hexCode}
       </h1>
-      <button onClick={() => setIsSaved(toggleSavedStatus(isSaved))}>
+      <button className='save-btn' onClick={() => setIsSaved(toggleSavedStatus(isSaved))}>
         Save
       </button>
     </article>

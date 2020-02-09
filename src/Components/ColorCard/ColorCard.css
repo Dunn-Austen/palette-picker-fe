@@ -1,4 +1,25 @@
 .color-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   height: 100%;
   width: 200px;
+}
+
+/* Be aware of visibility concerns due to contrast with shifting background */
+.hex-display {
+
+}
+
+.save-btn {
+  background-color: beige;
+  font-size: 20px;
+  height: 30px;
+  width: 70px;
+}
+
+.save-btn:hover {
+  background-color: yellow;
+  border: 2px solid black;
 }
