@@ -33,6 +33,7 @@ const App = () => {
         <ColorContainer
           paletteColors={paletteColor_1, paletteColor_2, paletteColor_3, paletteColor_4, paletteColor_5}
           isSavedStatuses={isSaved_1, isSaved_2, isSaved_3, isSaved_4, isSaved_5}
+          setIsSavedFunctions={setIsSaved_1, setIsSaved_2, setIsSaved_3, setIsSaved_4, setIsSaved_5}
         />
       </section>
     </main>
