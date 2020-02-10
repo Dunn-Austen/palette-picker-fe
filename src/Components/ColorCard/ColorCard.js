@@ -5,11 +5,7 @@ import PropTypes from 'prop-types';
 const ColorCard = ({ hexCode, isSaved, setIsSaved }) => {
 
   const toggleSavedStatus = (isSaved) => {
-    if (isSaved) {
-      return false
-    } else {
-      return true
-    }
+    return !isSaved
   }
 
   return (
