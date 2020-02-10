@@ -17,6 +17,9 @@ const App = () => {
   let [isSaved_4, setIsSaved_4] = useState(false);
   let [isSaved_5, setIsSaved_5] = useState(false);
 
+  let [palette, setPalette] = useState('');
+  let [projects, setProjects] = useState([]);
+
   const generateRandomColors = () => {
     if (!isSaved_1) {
       setPaletteColor_1('#'+Math.floor(Math.random()*16777215).toString(16))
@@ -48,6 +51,9 @@ const App = () => {
         <button className='generate-palette' onClick={() => generateRandomColors()}>
           Generate New Colors
         </button>
+        <SavePaletteForm
+          setPalette={setPalette}
+        />
       </section>
     </main>
   );
