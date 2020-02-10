@@ -168,7 +168,65 @@ describe('apiCalls', () => {
       });
 
       expect(patchProject(1)).rejects.toEqual(Error('Error updating project'));
-    }) 
-  })
-})
+    });
+  });
+
+  describe('patchPalette', () => {
+    let mockPatch, mockResponse, mockOptions;
+
+    beforeEach(() => {
+      mockPatch = {
+        id: 1, 
+        title: 'floor',
+        color_1_id: '#ee67e1',
+        color_1_id: '#acd567',
+        color_1_id: '#dac230',
+        color_1_id: '#adff12',
+        color_1_id: '#324131',
+        project_id: 1 
+      };
+      mockResponse = {
+        id: 1, 
+        title: 'floor',
+        color_1_id: '#ee67e1',
+        color_1_id: '#acd567',
+        color_1_id: '#dac230',
+        color_1_id: '#adff12',
+        color_1_id: '#324131',
+        project_id: 1 
+      };
+      mockOptions = {
+        method: "PATCH",
+        body: JSON.stringify(mockPatch),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        })
+      })
+    });
+
+    it('should call patchPalette with the correct URL and options', () => {
+      patchPalette(mockPatch);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://palette-picker-1908.herokuapp.com/api/v1/palettes/1', mockOptions)
+    });
+
+    it('should return the updated palette object', () => {
+      expect(patchPalette(mockPatch)).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error object if the Promise is rejected', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false })
+      });
+
+      expect(patchPalette(mockPatch)).rejects.toEqual(Error('Error updating palette.'));
+    });
+  });
+});
 

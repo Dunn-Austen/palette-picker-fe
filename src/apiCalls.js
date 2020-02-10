@@ -47,8 +47,21 @@ export const patchProject = (project) => {
     })
 }
 
-export const patchPalette = () => {
+export const patchPalette = (palette) => {
+  const { id } = palette;
+  const options = {
+    method: "PATCH",
+    body: JSON.stringify(palette),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
 
+  return fetch(`https://palette-picker-1908.herokuapp.com/api/v1/palettes/${id}`, options)
+    .then(res => {
+      if (!res.ok) throw Error('Error updating palette.')
+      return res.json()
+    })
 }
 
 export const deletePalette = () => {
