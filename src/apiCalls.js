@@ -14,12 +14,37 @@ export const fetchSingleProject = (id) => {
     })
 }
 
-export const postNewProject = () => {
+export const postNewProject = (project) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(project),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
   
+  return fetch(`https://palette-picker-1908.herokuapp.com/api/v1/projects`, options)
+    .then(res => {
+      if (!res.ok) throw Error('Error submitting project')
+      return res.json();
+    })
 }
 
-export const patchProject = () => {
+export const patchProject = (project) => {
+  const { id } = project;
+  const options = {
+    method: "PATCH",
+    body: JSON.stringify(project),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
 
+  return fetch(`https://palette-picker-1908.herokuapp.com/api/v1/projects/${id}`, options)
+    .then(res => {
+      if (!res.ok) throw Error('Error updating project')
+      return res.json()
+    })
 }
 
 export const patchPalette = () => {
