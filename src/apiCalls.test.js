@@ -69,7 +69,15 @@ describe('apiCalls', () => {
 
     it('should return a project object', () => {
       expect(fetchSingleProject(200)).resolves.toEqual(mockResponse);
-    })
+    });
+
+    it('should return an error is the Promise is rejected', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false })
+      });
+
+      expect(fetchSingleProject(2)).rejects.toEqual(Error('No project found with that id.'))
+    });
   })
 })
 
