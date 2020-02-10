@@ -1,0 +1,7 @@
+.color-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  justify-content: center;
+}
