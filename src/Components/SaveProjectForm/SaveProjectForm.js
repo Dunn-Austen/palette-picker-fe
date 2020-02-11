@@ -3,7 +3,7 @@ import './SaveProjectForm.css';
 import { postNewProject } from '../../apiCalls';
 import PropTypes from 'prop-types';
 
-const SaveProjectForm = ({projects, setProjects}) => {
+const SaveProjectForm = ({projects, addProject}) => {
 
   let [inputValue, setInputValue] = useState('');
   let [newProject, setNewProject] = useState({});
@@ -12,16 +12,24 @@ const SaveProjectForm = ({projects, setProjects}) => {
     setInputValue(event.target.value);
   }
 
-  const getNewProject = () => {
-    postNewProject({title: inputValue})
+  const clickHandler = async () => {
+    let projectRes;
+    if (!inputValue) return "Error"
+    await postNewProject({title: inputValue})
       .then(data => {
-        setNewProject({
+        projectRes = {
           id: data.id,
           title: data.title,
           palettes: []
-        })
-      })
+        }
+      });
+      await addProject(projectRes);
+      await setInputValue('');
   }
+
+
+
+ 
 
   return (
     <section className='form-section'>
@@ -33,10 +41,11 @@ const SaveProjectForm = ({projects, setProjects}) => {
             type='text'
             placeholder='Kitchen Themes'
             onChange={handleInputChange}
+            value={inputValue}
             />
         </div>
         <button type='button' className='post-project'
-          onClick={() => setProjects([...projects, getNewProject()])}
+          onClick={() => clickHandler()}
         >
           Create Project
         </button>
