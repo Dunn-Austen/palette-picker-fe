@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import ColorContainer from '../ColorContainer/ColorContainer';
 import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
+import SaveProjectForm from '../SaveProjectForm/SaveProjectForm';
 
 const App = () => {
 
@@ -16,6 +17,8 @@ const App = () => {
   let [isSaved_3, setIsSaved_3] = useState(false);
   let [isSaved_4, setIsSaved_4] = useState(false);
   let [isSaved_5, setIsSaved_5] = useState(false);
+
+  let [projects, setProjects] = useState([]);
 
   const generateRandomColors = () => {
     if (!isSaved_1) {
@@ -48,6 +51,16 @@ const App = () => {
         <button className='generate-palette' onClick={() => generateRandomColors()}>
           Generate New Colors
         </button>
+      </section>
+      <section className='forms-section'>
+        <SaveProjectForm
+          projects={projects}
+          setProjects={setProjects}
+        />
+        <SavePaletteForm
+          projects={projects}
+          setProjects={setProjects}
+        />
       </section>
     </main>
   );
