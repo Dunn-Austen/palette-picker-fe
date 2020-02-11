@@ -58,12 +58,10 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
   return (
     <section className='form-section'>
       <form className='palette-form'>
-        {projects.length ?
-          <select id="project-select" onChange={handleProjectChange}>
-            {projectNames}
-          </select>
-          : <p>No Projects Yet</p>
-        }
+        <select id="project-select" onChange={handleProjectChange}>
+          <option>--Select Project--</option>
+          {projectNames}
+        </select>
         <div className='input-container'>
           <label htmlFor='palette-input'>Save palette in project: </label>
           <input
