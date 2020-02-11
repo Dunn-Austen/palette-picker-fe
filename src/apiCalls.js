@@ -92,8 +92,20 @@ export const fetchAllPalettes = () => {
     })
 }
 
-export const postPalette = () => {
+export const postPalette = (palette) => {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(palette),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
 
+  return fetch('https://palette-picker-1908.herokuapp.com/api/v1/palettes', options)
+    .then(res => {
+      if (!res.ok) throw Error('Error submitting palette.')
+      return res.json()
+    })
 }
 
 export const deleteProject = () => {

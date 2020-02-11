@@ -354,5 +354,62 @@ describe('apiCalls', () => {
       expect(fetchAllPalettes()).rejects.toEqual(Error('Error getting palettes.'));
     });
   });
+
+  describe('postPalette', () => {
+    let mockResponse, mockPalette, mockOptions;
+
+    beforeEach(() => {
+      mockPalette = {
+        title: 'floor',
+        color_1_id: '#ee67e1',
+        color_2_id: '#acd567',
+        color_3_id: '#dac230',
+        color_4_id: '#adff12',
+        color_5_id: '#324131',
+        project_id: 1
+      };
+      mockResponse = {
+        id: 1,
+        title: 'floor',
+        color_1_id: '#ee67e1',
+        color_2_id: '#acd567',
+        color_3_id: '#dac230',
+        color_4_id: '#adff12',
+        color_5_id: '#324131',
+        project_id: 1
+      };
+      mockOptions = {
+        method: "POST",
+        body: JSON.stringify(mockPalette),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        })
+      })
+    });
+
+    it('should call postPalette with the correct URL and options', () => {
+      postPalette(mockPalette);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://palette-picker-1908.herokuapp.com/api/v1/palettes', mockOptions);
+    });
+
+    it('should return the newly created palette object', () => {
+      expect(postPalette(mockPalette)).resolves.toEqual(mockResponse)
+    });
+
+    it('should return an error message if Promise rejects', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false })
+      });
+
+      expect(postPalette(mockPalette)).rejects.toEqual(Error('Error submitting palette.'))
+    })
+  });
 });
 
