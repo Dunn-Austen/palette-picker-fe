@@ -228,5 +228,37 @@ describe('apiCalls', () => {
       expect(patchPalette(mockPatch)).rejects.toEqual(Error('Error updating palette.'));
     });
   });
+
+  describe('deletePalette', () => {
+    let mockOptions;
+    beforeEach(() => {
+      mockOptions = {
+        method: "DELETE"
+      };
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve('Project deleted')
+        })
+      });
+    });
+    it('should call deletePalette with correct URL', () => {
+      deletePalette(1);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://palette-picker-1908.herokuapp.com/api/v1/palettes/1', mockOptions);
+    });
+
+    it('should return a string of Project deleted', () => {
+      expect(deletePalette(1)).resolves.toEqual('Project Deleted');
+    });
+
+    it('should return an error message if Promise is rejected', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false })
+      });
+
+      expect(deletePalette(1)).rejects.toEqual(Error('Could not find palette with that id'));
+    });
+  });
 });
 

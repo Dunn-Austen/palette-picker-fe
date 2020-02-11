@@ -64,8 +64,16 @@ export const patchPalette = (palette) => {
     })
 }
 
-export const deletePalette = () => {
+export const deletePalette = (id) => {
+  const options = {
+    method: "DELETE"
+  };
 
+  return fetch(`https://palette-picker-1908.herokuapp.com/api/v1/palettes/${id}`, options)
+    .then(res => {
+      if (!res.ok) throw Error('Could not find palette with that id')
+      return 'Project Deleted'
+    })
 }
 
 export const fetchSinglePalette = () => {
