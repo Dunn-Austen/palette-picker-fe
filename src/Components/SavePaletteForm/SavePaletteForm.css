@@ -1,0 +1,11 @@
+#palette-input {
+  height: 18px;
+}
+
+.palette-form {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  justify-content: space-around;
+}

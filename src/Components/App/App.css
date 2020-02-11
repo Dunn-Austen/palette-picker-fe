@@ -23,6 +23,10 @@
 }
 
 .forms-section {
+  align-items: center;
   background-color: beige;
-  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25vh;
 }
