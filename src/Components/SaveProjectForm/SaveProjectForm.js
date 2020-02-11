@@ -1,9 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './SaveProjectForm.css';
+import { postNewProject } from '../../apicalls';
 
-const SaveProjectForm = () => {
+const SaveProjectForm = ({projects, setProjects}) => {
 
-  let inputValue;
+  let [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  }
+
+  const reformatResponseObject = (returnedBody) => {
+    return {...returnedBody, palettes: [] }
+  }
 
   return (
     <section className='form-section'>
@@ -13,9 +22,11 @@ const SaveProjectForm = () => {
           id='project-input'
           type='text'
           placeholder='Kitchen Themes'
-          value={inputValue}
+          onChange={handleInputChange}
           />
-        <button className='post-project'>
+        <button type='button' className='post-project'
+          onClick={() => setProjects([...projects, reformatResponseObject(postNewProject({title: inputValue}))])}
+        >
           Create Project
         </button>
       </form>
@@ -24,9 +35,3 @@ const SaveProjectForm = () => {
 }
 
 export default SaveProjectForm;
-
-//BUTTON ELEMENT NOTES
-//on click,
-//1) validation
-//2) POST a new project to our back-end, and reformat the response body
-//[...response.body, palettes: []] => then setThat into our projects state (in app)
