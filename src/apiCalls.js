@@ -76,12 +76,20 @@ export const deletePalette = (id) => {
     })
 }
 
-export const fetchSinglePalette = () => {
-
+export const fetchSinglePalette = (id) => {
+  return fetch(`https://palette-picker-1908.herokuapp.com/api/v1/palettes/${id}`)
+    .then(res => {
+      if (!res.ok) throw Error('Could not find palette with that id.')
+      return res.json();
+    })
 }
 
 export const fetchAllPalettes = () => {
-
+  return fetch('https://palette-picker-1908.herokuapp.com/api/v1/palettes')
+    .then(res => {
+      if (!res.ok) throw Error('Error getting palettes.')
+      return res.json();
+    })
 }
 
 export const postPalette = () => {

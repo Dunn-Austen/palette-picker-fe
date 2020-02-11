@@ -177,22 +177,22 @@ describe('apiCalls', () => {
     beforeEach(() => {
       mockPatch = {
         id: 1, 
-        title: 'floor',
+        title: 'wall',
         color_1_id: '#ee67e1',
-        color_1_id: '#acd567',
-        color_1_id: '#dac230',
-        color_1_id: '#adff12',
-        color_1_id: '#324131',
+        color_2_id: '#acd567',
+        color_3_id: '#dac230',
+        color_4_id: '#adff12',
+        color_5_id: '#324131',
         project_id: 1 
       };
       mockResponse = {
         id: 1, 
-        title: 'floor',
+        title: 'wall',
         color_1_id: '#ee67e1',
-        color_1_id: '#acd567',
-        color_1_id: '#dac230',
-        color_1_id: '#adff12',
-        color_1_id: '#324131',
+        color_2_id: '#acd567',
+        color_3_id: '#dac230',
+        color_4_id: '#adff12',
+        color_5_id: '#324131',
         project_id: 1 
       };
       mockOptions = {
@@ -258,6 +258,100 @@ describe('apiCalls', () => {
       });
 
       expect(deletePalette(1)).rejects.toEqual(Error('Could not find palette with that id'));
+    });
+  });
+
+  describe('fetchSinglePallete', () => {
+    let mockResponse;
+
+    beforeEach(() => {
+      mockResponse = {
+        id: 1,
+        title: 'floor',
+        color_1_id: '#ee67e1',
+        color_2_id: '#acd567',
+        color_3_id: '#dac230',
+        color_4_id: '#adff12',
+        color_5_id: '#324131',
+        project_id: 1
+      };
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        })
+      });
+    });
+
+    it('should call fetchSinglePalette with correct URL', () => {
+      fetchSinglePalette(1);
+
+      expect(window.fetch).toHaveBeenCalledWith(`https://palette-picker-1908.herokuapp.com/api/v1/palettes/1`);
+    });
+
+    it('should return a palette object', () => {
+      expect(fetchSinglePalette(1)).resolves.toEqual(mockResponse)
+    });
+
+    it('should return and error message if Promise rejects', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false })
+      });
+
+      expect(fetchSinglePalette(1)).rejects.toEqual(Error('Could not find palette with that id.'));
+    });
+  });
+
+  describe('fetchAllPalettes', () => {
+    let mockResponse;
+    
+    beforeEach(() => {
+      mockResponse = [
+        {
+          id: 1,
+          title: 'floor',
+          color_1_id: '#ee67e1',
+          color_2_id: '#acd567',
+          color_3_id: '#dac230',
+          color_4_id: '#adff12',
+          color_5_id: '#324131',
+          project_id: 1
+        },
+        {
+          id: 2,
+          title: 'wall',
+          color_1_id: '#ee67e1',
+          color_2_id: '#acd567',
+          color_3_id: '#dac230',
+          color_4_id: '#adff12',
+          color_5_id: '#324131',
+          project_id: 1
+        }
+      ];
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        })
+      });
+    });
+
+    it('should call fetchAllPalettes with the correct URL', () => {
+      fetchAllPalettes();
+
+      expect(window.fetch).toHaveBeenCalledWith('https://palette-picker-1908.herokuapp.com/api/v1/palettes')
+    });
+
+    it('should return an array of palette objects', () => {
+      expect(fetchAllPalettes()).resolves.toEqual(mockResponse)
+    });
+
+    it('should return an error message if the promise rejects', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false })
+      });
+
+      expect(fetchAllPalettes()).rejects.toEqual(Error('Error getting palettes.'));
     });
   });
 });
