@@ -18,13 +18,15 @@ const SaveProjectForm = ({projects, setProjects}) => {
   return (
     <section className='form-section'>
       <form className='project-form'>
-      <label htmlFor='project-input'>Create a project: </label>
-        <input
-          id='project-input'
-          type='text'
-          placeholder='Kitchen Themes'
-          onChange={handleInputChange}
-          />
+        <div className='input-container'>
+          <label htmlFor='project-input'>Create a project: </label>
+          <input
+            id='project-input'
+            type='text'
+            placeholder='Kitchen Themes'
+            onChange={handleInputChange}
+            />
+        </div>
         <button type='button' className='post-project'
           onClick={() => setProjects([...projects, reformatResponseObject(postNewProject({title: inputValue}))])}
         >

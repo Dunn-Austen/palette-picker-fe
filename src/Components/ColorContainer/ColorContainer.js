@@ -16,8 +16,6 @@ const ColorContainer = ({paletteColors, isSavedStatuses, setIsSavedFunctions}) =
       {hexCode: paletteColor_5, isSaved: isSaved_5, setIsSaved: setIsSaved_5},
     ];
 
-    console.log(combinedColorData);
-
   const displayColorCards = combinedColorData.map((colorData, index) => {
     return (
       <ColorCard
@@ -39,7 +37,7 @@ const ColorContainer = ({paletteColors, isSavedStatuses, setIsSavedFunctions}) =
 export default ColorContainer;
 
 ColorContainer.propTypes = {
-  paletteColors: PropTypes.array,
-  isSavedStatuses: PropTypes.array,
-  setIsSavedFunctions: PropTypes.array
+  paletteColors: PropTypes.object,
+  isSavedStatuses: PropTypes.object,
+  setIsSavedFunctions: PropTypes.object
 }
