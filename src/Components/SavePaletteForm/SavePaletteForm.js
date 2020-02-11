@@ -3,7 +3,12 @@ import './SavePaletteForm.css';
 
 const SavePaletteForm = () => {
 
-  let inputValue;
+  let [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  }
+  const
 
   return (
     <section className='form-section'>
@@ -19,7 +24,7 @@ const SavePaletteForm = () => {
             id='palette-input'
             type='text'
             placeholder='Backsplash Option #1'
-            value={inputValue}
+            value={handleInputChange}
             />
         </div>
         <button className='post-palette'>
