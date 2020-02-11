@@ -8,13 +8,20 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
   let [inputValue, setInputValue] = useState('');
   let [selectedProject, setCurrentProject] = useState({});
 
+  // const findProject = () => {
+  //   if (document.querySelector("#project-select").selectedOptions[0]) {
+  //     let select = document.querySelector("#project-select").selectedOptions[0];
+  //     console.log(select);
+  //   }
+  // }
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   }
 
   const handleProjectChange = (event) => {
-    let optionID = Number(event.target.selectedOptions[0].id);
-    let currentProject = projects.find(project => optionID === project.id)
+    let optionID = Number(event.target.value);
+    let currentProject = projects.find(project => optionID === project.id);
     setCurrentProject(currentProject);
   }
 
@@ -44,7 +51,7 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
 
   const projectNames = projects.map((project) => {
     return (
-  <option key={project.id} id={project.id} value={project.title}>Project {project.id}: {project.title}</option>
+  <option key={project.id} value={project.id}>Project {project.id}: {project.title}</option>
     )
   })
 
@@ -52,7 +59,7 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
     <section className='form-section'>
       <form className='palette-form'>
         {projects.length ?
-          <select onChange={handleProjectChange}>
+          <select id="project-select" onChange={handleProjectChange}>
             {projectNames}
           </select>
           : <p>No Projects Yet</p>
