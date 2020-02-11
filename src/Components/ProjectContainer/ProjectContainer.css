@@ -1,0 +1,7 @@
+.project-container {
+  background-color: #f2b8b8;
+  display: flex;
+  flex-wrap: wrap;
+  height: 35vh;
+  overflow: scroll;
+}

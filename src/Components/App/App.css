@@ -1,11 +1,18 @@
 .app {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
   height: 100vh;
   text-align: center;
 }
 
 .colors-section {
+  align-items: center;
+  background-color: #d6efff;
+  display: flex;
+  flex-direction: column;
   height: 40vh;
-  background-color: white;
+  justify-content: center;
 }
 
 .generate-palette {

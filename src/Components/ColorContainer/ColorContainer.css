@@ -1,7 +1,10 @@
 .color-container {
   align-items: center;
+  border: 5px ridge white;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   height: 80%;
   justify-content: center;
+  width: 70%;
 }
