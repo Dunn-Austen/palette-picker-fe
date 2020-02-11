@@ -12,7 +12,7 @@ const SavePaletteForm = ({projects, setProjects}) => {
   const generateOptions = () => {
     const projectNames = projects.map(project => {
       return (
-      `<option value='${project.title}'>
+      `<option value="${project.title}">
         ${project.title}
       </option>
       `
@@ -36,7 +36,7 @@ const SavePaletteForm = ({projects, setProjects}) => {
             id='palette-input'
             type='text'
             placeholder='Backsplash Option #1'
-            value={handleInputChange}
+            onChange={handleInputChange}
             />
         </div>
         <button className='post-palette'>

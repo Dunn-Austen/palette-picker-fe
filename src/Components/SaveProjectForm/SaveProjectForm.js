@@ -1,18 +1,26 @@
 import React, {useState} from 'react';
 import './SaveProjectForm.css';
-import { postNewProject } from '../../apicalls';
+import { postNewProject } from '../../apiCalls';
 import PropTypes from 'prop-types';
 
 const SaveProjectForm = ({projects, setProjects}) => {
 
   let [inputValue, setInputValue] = useState('');
+  let [newProject, setNewProject] = useState({});
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   }
 
-  const reformatResponseObject = (returnedBody) => {
-    return {...returnedBody, palettes: [] }
+  const getNewProject = () => {
+    postNewProject({title: inputValue})
+      .then(data => {
+        setNewProject({
+          id: data.id,
+          title: data.title,
+          palettes: []
+        })
+      })
   }
 
   return (
@@ -28,7 +36,7 @@ const SaveProjectForm = ({projects, setProjects}) => {
             />
         </div>
         <button type='button' className='post-project'
-          onClick={() => setProjects([...projects, reformatResponseObject(postNewProject({title: inputValue}))])}
+          onClick={() => setProjects([...projects, getNewProject()])}
         >
           Create Project
         </button>
