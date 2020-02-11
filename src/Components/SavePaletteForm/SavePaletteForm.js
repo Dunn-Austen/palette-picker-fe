@@ -1,23 +1,35 @@
 import React, {useState, useEffect} from 'react';
 import './SavePaletteForm.css';
 
-const SavePaletteForm = () => {
+const SavePaletteForm = ({projects, setProjects}) => {
 
   let [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   }
-  const
+
+  const generateOptions = () => {
+    const projectNames = projects.map(project => {
+      return (
+      `<option value='${project.title}'>
+        ${project.title}
+      </option>
+      `
+      )
+    })
+
+    return projectNames
+  };
 
   return (
     <section className='form-section'>
       <form className='palette-form'>
-        <select value={} name ='' onChange={}>
-          <option></option>
-          <option></option>
-          <option></option>
-        </select>
+        {projects.length &&
+          <select>
+            {generateOptions}
+          </select>
+        }
         <div className='input-container'>
           <label htmlFor='palette-input'>Save pallete in project: </label>
           <input

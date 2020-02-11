@@ -18,7 +18,6 @@ const App = () => {
   let [isSaved_4, setIsSaved_4] = useState(false);
   let [isSaved_5, setIsSaved_5] = useState(false);
 
-  let [palettes, setPalettes] = useState([]);
   let [projects, setProjects] = useState([]);
 
   const generateRandomColors = () => {
@@ -59,8 +58,6 @@ const App = () => {
           setProjects={setProjects}
         />
         <SavePaletteForm
-          palettes={palettes}
-          setPalettes={setPalettes}
           projects={projects}
           setProjects={setProjects}
         />
