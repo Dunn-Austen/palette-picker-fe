@@ -7,13 +7,8 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
 
   let [inputValue, setInputValue] = useState('');
   let [selectedProject, setCurrentProject] = useState({});
-
-  // const findProject = () => {
-  //   if (document.querySelector("#project-select").selectedOptions[0]) {
-  //     let select = document.querySelector("#project-select").selectedOptions[0];
-  //     console.log(select);
-  //   }
-  // }
+  let [inputError, setError] = useState('');
+  let [projectError, setProjectError] = useState('');
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -26,7 +21,10 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
   }
 
   const clickHandler = async () => {
-    if (!inputValue) return "Put something there"
+    if (!inputValue) return setError('error')
+    await setError('');
+    if (!selectedProject.id) return setProjectError('Please select project');
+    await setProjectError('');
     let newPalette = {
       title: inputValue,
       project_id: selectedProject.id,
@@ -37,7 +35,6 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
       color_5_id: paletteColors.paletteColor_5,
     };
     await submitPalette(newPalette);
-
   }
 
   const submitPalette = async (palette) => {
@@ -64,7 +61,7 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
         </select>
         <div className='input-container'>
           <label htmlFor='palette-input'>Save palette in project: </label>
-          <input
+          <input className={inputError}
             id='palette-input'
             type='text'
             placeholder='Backsplash Option #1'
@@ -78,6 +75,7 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
           onClick={() => clickHandler()}>
           Save palette
         </button>
+        {projectError && <p>{projectError}</p>}
       </form>
     </section>
   );
