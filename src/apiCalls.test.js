@@ -231,6 +231,7 @@ describe('apiCalls', () => {
 
   describe('deletePalette', () => {
     let mockOptions;
+
     beforeEach(() => {
       mockOptions = {
         method: "DELETE"
@@ -238,7 +239,7 @@ describe('apiCalls', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
-          json: () => Promise.resolve('Project deleted')
+          json: () => Promise.resolve('Palette deleted')
         })
       });
     });
@@ -248,8 +249,8 @@ describe('apiCalls', () => {
       expect(window.fetch).toHaveBeenCalledWith('https://palette-picker-1908.herokuapp.com/api/v1/palettes/1', mockOptions);
     });
 
-    it('should return a string of Project deleted', () => {
-      expect(deletePalette(1)).resolves.toEqual('Project Deleted');
+    it('should return a string of Palette deleted', () => {
+      expect(deletePalette(1)).resolves.toEqual('Palette Deleted');
     });
 
     it('should return an error message if Promise is rejected', () => {
@@ -409,7 +410,40 @@ describe('apiCalls', () => {
       });
 
       expect(postPalette(mockPalette)).rejects.toEqual(Error('Error submitting palette.'))
-    })
+    });
+  });
+
+  describe('deleteProject', () => {
+    let mockOptions;
+
+    beforeEach(() => {
+      mockOptions = {
+        method: "DELETE"
+      };
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve('Project deleted')
+        })
+      });
+    });
+    it('should call deleteProject with correct URL', () => {
+      deleteProject(1);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://palette-picker-1908.herokuapp.com/api/v1/projects/1', mockOptions);
+    });
+
+    it('should return a string of Project deleted', () => {
+      expect(deleteProject(1)).resolves.toEqual('Project Deleted');
+    });
+
+    it('should return an error message if Promise is rejected', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false })
+      });
+
+      expect(deleteProject(1)).rejects.toEqual(Error('Could not find project with that id'));
+    });
   });
 });
 

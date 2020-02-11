@@ -72,7 +72,7 @@ export const deletePalette = (id) => {
   return fetch(`https://palette-picker-1908.herokuapp.com/api/v1/palettes/${id}`, options)
     .then(res => {
       if (!res.ok) throw Error('Could not find palette with that id')
-      return 'Project Deleted'
+      return 'Palette Deleted'
     })
 }
 
@@ -108,6 +108,14 @@ export const postPalette = (palette) => {
     })
 }
 
-export const deleteProject = () => {
+export const deleteProject = (id) => {
+  const options = {
+    method: "DELETE"
+  };
 
+  return fetch(`https://palette-picker-1908.herokuapp.com/api/v1/projects/${id}`, options)
+    .then(res => {
+      if (!res.ok) throw Error('Could not find project with that id')
+      return 'Project Deleted'
+    })
 }
