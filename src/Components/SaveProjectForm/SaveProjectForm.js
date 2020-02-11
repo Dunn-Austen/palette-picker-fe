@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './SaveProjectForm.css';
 import { postNewProject } from '../../apicalls';
+import PropTypes from 'prop-types';
 
 const SaveProjectForm = ({projects, setProjects}) => {
 
@@ -35,3 +36,8 @@ const SaveProjectForm = ({projects, setProjects}) => {
 }
 
 export default SaveProjectForm;
+
+SaveProjectForm.propTypes = {
+  projects: PropTypes.array,
+  setProjects: PropTypes.func
+}
