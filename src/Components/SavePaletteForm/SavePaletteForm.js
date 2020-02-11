@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './SavePaletteForm.css';
 import { postPalette } from '../../apiCalls';
+import PropTypes from 'prop-types';
 
 
 const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
@@ -69,8 +70,8 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
             value={inputValue}
             />
         </div>
-        <button 
-          type="button" 
+        <button
+          type="button"
           className='post-palette'
           onClick={() => clickHandler()}>
           Save palette
@@ -82,3 +83,9 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
 }
 
 export default SavePaletteForm;
+
+SavePaletteForm.propTypes = {
+  projects: PropTypes.array,
+  updateProjects: PropTypes.func,
+  paletteColors: PropTypes.object
+}
