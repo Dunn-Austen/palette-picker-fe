@@ -38,6 +38,14 @@ const App = () => {
     };
   }
 
+  const addProject = project => {
+    setProjects([...projects, project])
+  }
+
+  const updateProjects = (projects) => {
+    setProjects(projects)
+  }
+
   useEffect(() => generateRandomColors(), []);
 
   return (
@@ -55,11 +63,12 @@ const App = () => {
       <section className='forms-section'>
         <SaveProjectForm
           projects={projects}
-          setProjects={setProjects}
+          addProject={addProject}
         />
         <SavePaletteForm
           projects={projects}
-          setProjects={setProjects}
+          updateProjects={updateProjects}
+          paletteColors={{paletteColor_1, paletteColor_2, paletteColor_3, paletteColor_4, paletteColor_5}}
         />
       </section>
     </main>
