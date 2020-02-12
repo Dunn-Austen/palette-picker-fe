@@ -1,7 +1,9 @@
 .project-container {
+  align-items: center;
   background-color: #f2b8b8;
   display: flex;
   flex-wrap: wrap;
   height: 35vh;
+  justify-content: space-around;
   overflow: scroll;
 }
