@@ -3,6 +3,7 @@ import './App.css';
 import ColorContainer from '../ColorContainer/ColorContainer';
 import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
 import SaveProjectForm from '../SaveProjectForm/SaveProjectForm';
+import ProjectContainer from '../ProjectContainer/ProjectContainer';
 
 const App = () => {
 
@@ -71,6 +72,12 @@ const App = () => {
           paletteColors={{paletteColor_1, paletteColor_2, paletteColor_3, paletteColor_4, paletteColor_5}}
         />
       </section>
+      <section className='projects-section'>
+        <ProjectContainer
+          projects={projects}
+        />
+      </section>
+
     </main>
   );
 }
