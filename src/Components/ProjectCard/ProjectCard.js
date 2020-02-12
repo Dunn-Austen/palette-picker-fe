@@ -8,8 +8,10 @@ const ProjectCard = ({title, palettes, updateProjects, projects}) => {
   const displayPaletteCards = palettes.map((palette, index) => {
     return (
       <PaletteCard
+        projects={projects}
         updateProjects={updateProjects}
         title={palette.title}
+        id={palette.id}
         project_id={palette.project_id}
         color_1_id={palette.color_1_id}
         color_2_id={palette.color_2_id}

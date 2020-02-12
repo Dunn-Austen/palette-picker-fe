@@ -9,6 +9,7 @@ const ProjectContainer = ({projects, updateProjects}) => {
   const displayProjectCards = projects.map((project, index) => {
     return (
       <ProjectCard
+        projects={projects}
         id={project.id}
         title={project.title}
         palettes={project.palettes}
