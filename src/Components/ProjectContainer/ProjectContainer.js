@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import ProjectCard from '../ProjectCard/ProjectCard';
 
 
-const ProjectContainer = ({projects}) => {
+const ProjectContainer = ({projects, updateProjects}) => {
 
   const displayProjectCards = projects.map((project, index) => {
-    console.log(projects);
     return (
       <ProjectCard
         id={project.id}
         title={project.title}
         palettes={project.palettes}
+        updateProjects={updateProjects}
         key={index}
       />
     );

@@ -3,11 +3,12 @@ import './ProjectCard.css';
 import PropTypes from 'prop-types';
 import PaletteCard from '../PaletteCard/PaletteCard'
 
-const ProjectCard = ({title, palettes}) => {
+const ProjectCard = ({title, palettes, updateProjects}) => {
 
   const displayPaletteCards = palettes.map((palette, index) => {
     return (
       <PaletteCard
+        updateProjects={updateProjects}
         title={palette.title}
         project_id={palette.project_id}
         color_1_id={palette.color_1_id}

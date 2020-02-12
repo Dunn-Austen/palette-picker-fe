@@ -75,6 +75,7 @@ const App = () => {
       <section className='projects-section'>
         <ProjectContainer
           projects={projects}
+          updateProjects={updateProjects}
         />
       </section>
 
