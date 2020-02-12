@@ -3,7 +3,7 @@ import './ProjectCard.css';
 import PropTypes from 'prop-types';
 import PaletteCard from '../PaletteCard/PaletteCard'
 
-const ProjectCard = ({title, palettes, updateProjects}) => {
+const ProjectCard = ({title, palettes, updateProjects, projects}) => {
 
   const displayPaletteCards = palettes.map((palette, index) => {
     return (
