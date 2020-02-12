@@ -35,6 +35,7 @@ const SavePaletteForm = ({projects, updateProjects, paletteColors}) => {
       color_5_id: paletteColors.paletteColor_5,
     };
     await submitPalette(newPalette);
+    await setInputValue('');
   }
 
   const submitPalette = async (palette) => {

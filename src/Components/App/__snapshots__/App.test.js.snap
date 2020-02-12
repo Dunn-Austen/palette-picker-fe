@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+<main
+  className="app"
+>
+  <section
+    className="colors-section"
+  >
+    <ColorContainer
+      isSavedStatuses={
+        Object {
+          "isSaved_1": false,
+          "isSaved_2": false,
+          "isSaved_3": false,
+          "isSaved_4": false,
+          "isSaved_5": false,
+        }
+      }
+      paletteColors={
+        Object {
+          "paletteColor_1": "#000000",
+          "paletteColor_2": "#bbbbbb",
+          "paletteColor_3": "#222222",
+          "paletteColor_4": "#dddddd",
+          "paletteColor_5": "#444444",
+        }
+      }
+      setIsSavedFunctions={
+        Object {
+          "setIsSaved_1": [Function],
+          "setIsSaved_2": [Function],
+          "setIsSaved_3": [Function],
+          "setIsSaved_4": [Function],
+          "setIsSaved_5": [Function],
+        }
+      }
+    />
+    <button
+      className="generate-palette"
+      onClick={[Function]}
+    >
+      Generate New Colors
+    </button>
+  </section>
+  <section
+    className="forms-section"
+  >
+    <SaveProjectForm
+      addProject={[Function]}
+      projects={Array []}
+    />
+    <SavePaletteForm
+      paletteColors={
+        Object {
+          "paletteColor_1": "#000000",
+          "paletteColor_2": "#bbbbbb",
+          "paletteColor_3": "#222222",
+          "paletteColor_4": "#dddddd",
+          "paletteColor_5": "#444444",
+        }
+      }
+      projects={Array []}
+      updateProjects={[Function]}
+    />
+  </section>
+</main>
+`;
