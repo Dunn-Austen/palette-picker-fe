@@ -1,14 +1,28 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './ProjectContainer.css';
-import ProjectContainer from 'prop-types';
+import PropTypes from 'prop-types';
+import ProjectCard from '../ProjectCard/ProjectCard';
 
 
-const ProjectContainer = () => {
+const ProjectContainer = ({projects}) => {
+
+  const displayProjectCards = projects.map((project, index) => {
+    console.log(projects);
+    return (
+      <ProjectCard
+        id={project.id}
+        title={project.title}
+        palettes={project.palettes}
+        key={index}
+      />
+    );
+  });
 
   return (
-    <section className='form-section'>
+    <section className='project-container'>
+      {displayProjectCards}
     </section>
   );
 }
 
-export default SavePaletteForm;
+export default ProjectContainer;
