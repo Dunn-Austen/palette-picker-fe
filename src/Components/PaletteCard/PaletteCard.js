@@ -1,31 +1,35 @@
 import React, { useState } from 'react';
 import './PaletteCard.css';
 import PropTypes from 'prop-types';
+import { patchPalette } from '../../apiCalls';
 
-const PaletteCard = ({updateProjects, projects, title, project_id, color_1_id, color_2_id, color_3_id, color_4_id, color_5_id}) => {
+const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_id, color_2_id, color_3_id, color_4_id, color_5_id}) => {
 
   let [editStatus, setEditStatus] = useState(false);
-  let [currentPalette, setCurrentPalette] = useState({color_1_id, color_2_id, color_3_id, color_4_id, color_5_id, project_id, title});
+  let [currentPalette, setCurrentPalette] = useState({id, title, color_1_id, color_2_id, color_3_id, color_4_id, color_5_id, project_id});
 
   const changeColor = (event) => {
-    console.log(event);
     let newPalette = {...currentPalette};
     let targetedValue = event.target.value;
     newPalette[targetedValue] = '#'+Math.floor(Math.random()*16777215).toString(16);
-    console.log(newPalette);
 
     setCurrentPalette(newPalette);
   }
 
   const updatePalette = async (palette) => {
-    await postPalette(palette)
-      .then()
+    let newProjects = [...projects];
+    await patchPalette(palette)
+      .then(returnedPalette => {
+        newProjects.find(project => returnedPalette.project_id === project.id)
+          .palettes.map(paletteObject => {
+            if (returnedPalette.title === paletteObject.title) {
+              return returnedPalette
+            }
+          })
+      });
+
+      updateProjects(newProjects)
   }
-
-  //onClick, generate a random color to replace the value for the projects, project, palettes, specific palette.color
-  // Capture this value in a new palette object'
-  //Write logic to copy PROJECTS, FIND THE SPECIFIC PROJECT, palette, then replace the palette objects
-
 
   return (
     <section className='palette-card'>
