@@ -7,6 +7,7 @@ const SaveProjectForm = ({projects, addProject}) => {
 
   let [inputValue, setInputValue] = useState('');
   let [newProject, setNewProject] = useState({});
+  let [error, setError] = useState('')
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -14,7 +15,8 @@ const SaveProjectForm = ({projects, addProject}) => {
 
   const clickHandler = async () => {
     let projectRes;
-    if (!inputValue) return "Error"
+    if (!inputValue) return setError('error')
+    await setError('');
     await postNewProject({title: inputValue})
       .then(data => {
         projectRes = {
@@ -23,20 +25,16 @@ const SaveProjectForm = ({projects, addProject}) => {
           palettes: []
         }
       });
-      await addProject(projectRes);
-      await setInputValue('');
+    await addProject(projectRes);
+    await setInputValue('');
   }
-
-
-
- 
 
   return (
     <section className='form-section'>
       <form className='project-form'>
         <div className='input-container'>
           <label htmlFor='project-input'>Create a project: </label>
-          <input
+          <input className={error}
             id='project-input'
             type='text'
             placeholder='Kitchen Themes'

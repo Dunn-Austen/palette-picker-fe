@@ -9,3 +9,7 @@
   height: 10vh;
   justify-content: space-around;
 }
+
+.error {
+  border: 1px solid red;
+}
