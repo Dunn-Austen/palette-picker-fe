@@ -3,6 +3,8 @@ import './App.css';
 import ColorContainer from '../ColorContainer/ColorContainer';
 import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
 import SaveProjectForm from '../SaveProjectForm/SaveProjectForm';
+import ProjectContainer from '../ProjectContainer/ProjectContainer';
+import { fetchAllPalettes, fetchAllProjects } from '../../apiCalls';
 
 const App = () => {
 
@@ -38,6 +40,28 @@ const App = () => {
     };
   }
 
+  const combineFetches = async () => {
+    let temporaryProjects;
+    await fetchAllProjects()
+      .then(projectsData => {
+        temporaryProjects = projectsData.projects.map(project => {
+          return {
+            id: project.id,
+            title: project.title,
+            palettes: []
+          }
+        });
+      });
+    await fetchAllPalettes()
+      .then(palettesData => {
+          console.log(temporaryProjects);
+          palettesData.palettes.forEach(palette => {
+            temporaryProjects.find(project => palette.project_id === project.id).palettes.push(palette)
+          })
+          setProjects(temporaryProjects)
+      })
+  }
+
   const addProject = project => {
     setProjects([...projects, project])
   }
@@ -47,6 +71,7 @@ const App = () => {
   }
 
   useEffect(() => generateRandomColors(), []);
+  useEffect(() => combineFetches(), []);
 
   return (
     <main className='app'>
@@ -71,6 +96,13 @@ const App = () => {
           paletteColors={{paletteColor_1, paletteColor_2, paletteColor_3, paletteColor_4, paletteColor_5}}
         />
       </section>
+      <section className='projects-section'>
+        <ProjectContainer
+          projects={projects}
+          updateProjects={updateProjects}
+        />
+      </section>
+
     </main>
   );
 }

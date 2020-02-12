@@ -1,0 +1,13 @@
+.project-card {
+  align-items: center;
+  background-color: #E4D5D4;
+  border: 2px groove purple;
+  box-shadow: 0px 2px 10px 1px #52023D;
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  justify-content: center;
+  margin: 15px 0px;
+  overflow: scroll;
+  width: 40%;
+}
