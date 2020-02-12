@@ -20,15 +20,20 @@ const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_i
     let newProjects = [...projects];
     await patchPalette(palette)
       .then(returnedPalette => {
-        newProjects.find(project => returnedPalette.project_id === project.id)
-          .palettes.map(paletteObject => {
-            if (returnedPalette.title === paletteObject.title) {
-              return returnedPalette
-            }
-          })
+        let foundProject = newProjects.find(project => {
+          return project.id === returnedPalette.project_id
+        })
+        let foundPalette = foundProject.palettes.find(palette => palette.id === returnedPalette.id);
+        foundPalette.color_1_id = returnedPalette.color_1_id;
+        foundPalette.color_2_id = returnedPalette.color_2_id;
+        foundPalette.color_3_id = returnedPalette.color_3_id;
+        foundPalette.color_4_id = returnedPalette.color_4_id;
+        foundPalette.color_5_id = returnedPalette.color_5_id;
+
+        updateProjects(newProjects);
+        setEditStatus(!editStatus)
       });
 
-      updateProjects(newProjects)
   }
 
   return (
