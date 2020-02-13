@@ -2,12 +2,33 @@ import React, { useState } from 'react';
 import './ProjectCard.css';
 import PropTypes from 'prop-types';
 import PaletteCard from '../PaletteCard/PaletteCard';
-import { deleteProject, fetchAllProjects, fetchAllPalettes } from '../../apiCalls';
+import { deleteProject, fetchAllProjects, fetchAllPalettes, patchProject } from '../../apiCalls';
 
 const ProjectCard = ({title, id, palettes, updateProjects, projects}) => {
 
   let [editStatus, setEditStatus] = useState(false);
   let [inputValue, setInputValue] = useState('');
+  let [currentProject, setCurrentProject] = useState({title, id, palettes});
+
+  const changeTitle = () => {
+    let newProjects = [...projects];
+    let newProject = {...currentProject};
+    newProject.title = inputValue;
+    setCurrentProject(newProject);
+
+    patchProject(newProject)
+      .then(returnedProject => {
+        let foundProject = newProjects.find(project => project.id === returnedProject.id);
+          foundProject.title = returnedProject.title;
+          foundProject.id = returnedProject.id;
+          foundProject.palettes = returnedProject.palettes;
+        });
+
+        console.log(newProjects);
+
+        updateProjects(newProjects);
+        setEditStatus(false);
+  };
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -64,13 +85,13 @@ const ProjectCard = ({title, id, palettes, updateProjects, projects}) => {
           </button>
         }
         {editStatus &&
-          <button className='save-title' onClick={() => setEditStatus(false)}>
+          <button className='save-title' onClick={() => changeTitle()}>
             Save Title
           </button>
         }
         {!editStatus &&
           <h1 className='project-title'>
-            {title}
+            {currentProject.title}
           </h1>
         }
         {editStatus &&
