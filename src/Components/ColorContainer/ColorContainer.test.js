@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ColorContainer from './ColorContainer';
 
-describe('App', () => {
+describe('ColorContainer', () => {
   it('should match the snapshot', () => {
     const mockPaletteColors = {
       paletteColor_1: '#444443',
