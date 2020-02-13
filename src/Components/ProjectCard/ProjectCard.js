@@ -26,12 +26,12 @@ const ProjectCard = ({title, palettes, updateProjects, projects}) => {
   return (
     <section className='project-card'>
       <header>
-        <div className='title-container'>
-          <h1 className='project-title'>{title}</h1>
-          <button className='edit-title'>
-            Edit Title
-          </button>
-        </div>
+        <button className='edit-title'>
+          Edit Title
+        </button>
+        <h1 className='project-title'>
+          {title}
+        </h1>
         <button className='delete-project'>
           Delete Project
         </button>

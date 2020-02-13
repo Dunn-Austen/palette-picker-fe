@@ -7,6 +7,7 @@
   flex-direction: column;
   height: 30vh;
   justify-content: center;
+  margin-top: 10px;
   overflow: scroll;
   width: 40%;
 }
@@ -16,31 +17,24 @@
   background-color: #E4D5D4;
   display: flex;
   flex-direction: column;
-  height: 30vh;
+  height: 25vh;
   justify-content: space-between;
   width: 100%;
 }
-
-
 
 header {
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 5px;
   width: 100%;
 }
 
-.title-container {
-  display: flex;
-  flex-direction: row;
-}
-
 .project-title {
+  line-height: 7px;
   margin: 0;
 }
 
 .edit-title {
-  height: 30px;
 }
