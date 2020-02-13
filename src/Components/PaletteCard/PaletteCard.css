@@ -33,3 +33,12 @@
   height: 100%;
   width: 20%;
 }
+
+.palette-slice:hover {
+  cursor: pointer;
+  transform: scale(1.04)
+}
+
+.palette-title {
+  margin: 0;
+}

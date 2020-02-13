@@ -99,6 +99,8 @@ const App = () => {
         <ProjectContainer
           projects={projects}
           updateProjects={updateProjects}
+          paletteColors={{paletteColor_1, paletteColor_2, paletteColor_3, paletteColor_4, paletteColor_5}}
+          setPaletteColors={{setPaletteColor_1, setPaletteColor_2, setPaletteColor_3, setPaletteColor_4, setPaletteColor_5}}
         />
       </section>
 

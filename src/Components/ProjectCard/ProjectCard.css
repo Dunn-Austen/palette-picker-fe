@@ -7,7 +7,39 @@
   flex-direction: column;
   height: 30vh;
   justify-content: center;
-  margin: 15px 0px;
+  margin: 15px 0;
   overflow: scroll;
-  width: 40%;
+  width: 60%;
+}
+
+.palettes-section {
+  align-items: center;
+  background-color: #E4D5D4;
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  justify-content: space-between;
+  width: 100%;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.project-title {
+  line-height: 7px;
+  margin: 0;
+}
+
+.edit-title {
+}
+
+.title-input {
+  text-align: center;
+  width: 30%;
 }
