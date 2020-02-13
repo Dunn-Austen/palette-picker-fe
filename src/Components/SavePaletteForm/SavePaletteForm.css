@@ -4,6 +4,7 @@
 
 .palette-form {
   align-items: center;
+  box-shadow: 0 0 6px 1px black;
   display: flex;
   flex-direction: row;
   height: 10vh;
@@ -12,4 +13,9 @@
 
 .error {
   border: 1px solid red;
+}
+
+button:hover {
+  background-color: yellow;
+  border: 2px solid black;
 }

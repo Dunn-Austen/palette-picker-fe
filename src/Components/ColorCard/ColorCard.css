@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
-  width: 200px;
+  width: 20%;
 }
 
 /* Be aware of visibility concerns due to contrast with shifting background */
@@ -16,7 +16,7 @@
   background-color: beige;
   font-size: 20px;
   height: 30px;
-  width: 85px;
+  width: 85%;
 }
 
 .save-btn:hover {

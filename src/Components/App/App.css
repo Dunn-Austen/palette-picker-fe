@@ -18,6 +18,7 @@
 .generate-palette {
   background-color: beige;
   border-radius: 20px;
+  box-shadow: 0 0 2px 1px black;
   font-size: 25px;
   height: 35px;
   margin-top: 5px;

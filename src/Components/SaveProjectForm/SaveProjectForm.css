@@ -21,6 +21,7 @@ label {
 
 .project-form {
   align-items: center;
+  box-shadow: 0 0 6px 1px black;
   display: flex;
   flex-direction: row;
   height: 10vh;
