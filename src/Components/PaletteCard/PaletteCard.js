@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PaletteCard.css';
 import PropTypes from 'prop-types';
-import { patchPalette } from '../../apiCalls';
+import { patchPalette, deletePalette, fetchAllPalettes, fetchAllProjects } from '../../apiCalls';
 
 const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_id, color_2_id, color_3_id, color_4_id, color_5_id}) => {
 
@@ -33,7 +33,30 @@ const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_i
         updateProjects(newProjects);
         setEditStatus(!editStatus)
       });
+  }
 
+  const removePalette = async (event) => {
+    const id = event.target.dataset.id;
+    let temporaryProjects;
+
+    await deletePalette(id);
+    await fetchAllProjects()
+      .then(projectsData => {
+        temporaryProjects = projectsData.projects.map(project => {
+          return {
+            id: project.id,
+            title: project.title,
+            palettes: []
+          }
+        });
+      });
+    await fetchAllPalettes()
+      .then(palettesData => {
+          palettesData.palettes.forEach(palette => {
+            temporaryProjects.find(project => palette.project_id === project.id).palettes.push(palette)
+          })
+          updateProjects(temporaryProjects)
+      })
   }
 
   return (
@@ -82,7 +105,7 @@ const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_i
         {editStatus &&
           <button className='save-palette' onClick={() => updatePalette(currentPalette)}>Save</button>
         }
-        <button className='delete-palette'>Delete</button>
+        <button data-id={id} className='delete-palette' onClick={removePalette}>Delete</button>
       </section>
     </section>
   )
