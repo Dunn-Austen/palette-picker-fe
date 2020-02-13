@@ -1,9 +1,10 @@
 import React from 'react';
 import './ProjectCard.css';
 import PropTypes from 'prop-types';
-import PaletteCard from '../PaletteCard/PaletteCard'
+import PaletteCard from '../PaletteCard/PaletteCard';
+import { deleteProject, fetchAllProjects, fetchAllPalettes } from '../../apiCalls';
 
-const ProjectCard = ({title, palettes, updateProjects, projects}) => {
+const ProjectCard = ({title, id, palettes, updateProjects, projects}) => {
 
   const displayPaletteCards = palettes.map((palette, index) => {
     return (
@@ -23,6 +24,30 @@ const ProjectCard = ({title, palettes, updateProjects, projects}) => {
     )
   });
 
+  const removeProject = async (event) => {
+    const id = event.target.dataset.id;
+    let temporaryProjects;
+
+    await deleteProject(id);
+    await fetchAllProjects()
+      .then(projectsData => {
+        temporaryProjects = projectsData.projects.map(project => {
+          return {
+            id: project.id,
+            title: project.title,
+            palettes: []
+          }
+        });
+      });
+    await fetchAllPalettes()
+      .then(palettesData => {
+          palettesData.palettes.forEach(palette => {
+            temporaryProjects.find(project => palette.project_id === project.id).palettes.push(palette)
+          })
+          updateProjects(temporaryProjects)
+      })
+  }
+
   return (
     <section className='project-card'>
       <header>
@@ -32,7 +57,7 @@ const ProjectCard = ({title, palettes, updateProjects, projects}) => {
         <h1 className='project-title'>
           {title}
         </h1>
-        <button className='delete-project'>
+        <button data-id={id} className='delete-project' onClick={removeProject}>
           Delete Project
         </button>
       </header>
