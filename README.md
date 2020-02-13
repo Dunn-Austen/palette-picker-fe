@@ -19,3 +19,11 @@ Palette Picker is your one stop shop when you need a set of 5 colors, but have N
 * Node.js w/ Express
 * Knex database query library
 * PostgreSQL database
+
+#### Screenshots
+App-still:
+![image](https://user-images.githubusercontent.com/42498559/74444733-88486a80-4e32-11ea-9b71-81a6ab8cdaef.png)
+
+#### Initial Wireframe
+
+![image](https://user-images.githubusercontent.com/42498559/74444577-520aeb00-4e32-11ea-91b7-121980ab6f1a.png)
