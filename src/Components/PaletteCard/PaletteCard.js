@@ -3,10 +3,20 @@ import './PaletteCard.css';
 import PropTypes from 'prop-types';
 import { patchPalette, deletePalette, fetchAllPalettes, fetchAllProjects } from '../../apiCalls';
 
-const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_id, color_2_id, color_3_id, color_4_id, color_5_id}) => {
+const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_id, color_2_id, color_3_id, color_4_id, color_5_id, setPaletteColors, paletteColors}) => {
+  let { paletteColor_1, paletteColor_2, paletteColor_3, paletteColor_4, paletteColor_5 } = paletteColors;
+  let { setPaletteColor_1, setPaletteColor_2, setPaletteColor_3, setPaletteColor_4, setPaletteColor_5 } = setPaletteColors;
 
   let [editStatus, setEditStatus] = useState(false);
   let [currentPalette, setCurrentPalette] = useState({id, title, color_1_id, color_2_id, color_3_id, color_4_id, color_5_id, project_id});
+
+  const handleColorClick = () => {
+    setPaletteColor_1(color_1_id);
+    setPaletteColor_2(color_2_id);
+    setPaletteColor_3(color_3_id);
+    setPaletteColor_4(color_4_id);
+    setPaletteColor_5(color_5_id)
+  }
 
   const changeColor = (event) => {
     let newPalette = {...currentPalette};
@@ -62,35 +72,35 @@ const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_i
   return (
     <section className='palette-card'>
       <section className='palette-container'>
-        <div className='palette-slice' style={{backgroundColor: currentPalette.color_1_id}}>
+        <div onClick={handleColorClick} className='palette-slice' style={{backgroundColor: currentPalette.color_1_id}}>
           {editStatus &&
             <button className='change-color' value='color_1_id' onClick={changeColor}>
               Change
             </button>
           }
         </div>
-        <div className='palette-slice' style={{backgroundColor: currentPalette.color_2_id}}>
+        <div onClick={handleColorClick} className='palette-slice' style={{backgroundColor: currentPalette.color_2_id}}>
           {editStatus &&
             <button className='change-color' value='color_2_id' onClick={changeColor}>
               Change
             </button>
           }
         </div>
-        <div className='palette-slice' style={{backgroundColor: currentPalette.color_3_id}}>
+        <div onClick={handleColorClick} className='palette-slice' style={{backgroundColor: currentPalette.color_3_id}}>
           {editStatus &&
             <button className='change-color' value='color_3_id' onClick={changeColor}>
               Change
             </button>
           }
         </div>
-        <div className='palette-slice' style={{backgroundColor: currentPalette.color_4_id}}>
+        <div onClick={handleColorClick} className='palette-slice' style={{backgroundColor: currentPalette.color_4_id}}>
           {editStatus &&
             <button className='change-color' value='color_4_id' onClick={changeColor}>
               Change
             </button>
           }
         </div>
-        <div className='palette-slice' style={{backgroundColor: currentPalette.color_5_id}}>
+        <div onClick={handleColorClick} className='palette-slice' style={{backgroundColor: currentPalette.color_5_id}}>
         {editStatus &&
           <button className='change-color' value='color_5_id' onClick={changeColor}>
             Change
@@ -99,6 +109,7 @@ const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_i
         </div>
       </section>
       <section className='btn-container'>
+        <h1 className='palette-title'>{title}</h1>
         {!editStatus &&
           <button className='edit-palette' onClick={() => setEditStatus(!editStatus)}>Edit</button>
         }

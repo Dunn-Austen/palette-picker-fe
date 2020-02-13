@@ -3,8 +3,7 @@ import './ProjectContainer.css';
 import PropTypes from 'prop-types';
 import ProjectCard from '../ProjectCard/ProjectCard';
 
-
-const ProjectContainer = ({projects, updateProjects}) => {
+const ProjectContainer = ({projects, updateProjects, paletteColors, setPaletteColors}) => {
 
   const displayProjectCards = projects.map((project, index) => {
     return (
@@ -14,6 +13,8 @@ const ProjectContainer = ({projects, updateProjects}) => {
         title={project.title}
         palettes={project.palettes}
         updateProjects={updateProjects}
+        paletteColors={paletteColors}
+        setPaletteColors={setPaletteColors}
         key={index}
       />
     );

@@ -7,7 +7,7 @@
   flex-direction: column;
   height: 30vh;
   justify-content: center;
-  margin-top: 10px;
+  margin: 15px 0;
   overflow: scroll;
   width: 60%;
 }

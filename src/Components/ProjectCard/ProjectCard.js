@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PaletteCard from '../PaletteCard/PaletteCard';
 import { deleteProject, fetchAllProjects, fetchAllPalettes, patchProject } from '../../apiCalls';
 
-const ProjectCard = ({title, id, palettes, updateProjects, projects}) => {
+const ProjectCard = ({title, id, palettes, updateProjects, projects, paletteColors, setPaletteColors}) => {
 
   let [editStatus, setEditStatus] = useState(false);
   let [inputValue, setInputValue] = useState('');
@@ -47,6 +47,8 @@ const ProjectCard = ({title, id, palettes, updateProjects, projects}) => {
         color_3_id={palette.color_3_id}
         color_4_id={palette.color_4_id}
         color_5_id={palette.color_5_id}
+        paletteColors={paletteColors}
+        setPaletteColors={setPaletteColors}
         key={index}
       />
     )
