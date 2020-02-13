@@ -13,7 +13,7 @@ Palette Picker is your one stop shop when you need a set of 5 colors, but have N
 * Testing with Jest and Enzyme
 
 #### Back-End
-[View Documentation Here](https://github.com/Dustin-Mikusko/palette-picker-be)
+[View Documentation Here](https://github.com/Dustin-Mikusko/palette-picker-be)<br>
 [Deployed on Heroku](https://palette-picker-1908.herokuapp.com)
 
 * Node.js w/ Express
