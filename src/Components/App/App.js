@@ -54,7 +54,6 @@ const App = () => {
       });
     await fetchAllPalettes()
       .then(palettesData => {
-          console.log(temporaryProjects);
           palettesData.palettes.forEach(palette => {
             temporaryProjects.find(project => palette.project_id === project.id).palettes.push(palette)
           })
