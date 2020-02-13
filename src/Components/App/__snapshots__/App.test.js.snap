@@ -64,5 +64,13 @@ exports[`App should match the snapshot 1`] = `
       updateProjects={[Function]}
     />
   </section>
+  <section
+    className="projects-section"
+  >
+    <ProjectContainer
+      projects={Array []}
+      updateProjects={[Function]}
+    />
+  </section>
 </main>
 `;

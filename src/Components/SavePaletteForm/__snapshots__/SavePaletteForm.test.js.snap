@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SavePaletteForm should match the snapshot 1`] = `
+<section
+  className="form-section"
+>
+  <form
+    className="palette-form"
+  >
+    <select
+      id="project-select"
+      onChange={[Function]}
+    >
+      <option>
+        --Select Project--
+      </option>
+      <option
+        key="1"
+        value={1}
+      >
+        Project 
+        1
+        : 
+        kitchen
+      </option>
+    </select>
+    <div
+      className="input-container"
+    >
+      <label
+        htmlFor="palette-input"
+      >
+        Save palette in project: 
+      </label>
+      <input
+        className=""
+        id="palette-input"
+        onChange={[Function]}
+        placeholder="Backsplash Option #1"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="post-palette"
+      onClick={[Function]}
+      type="button"
+    >
+      Save palette
+    </button>
+  </form>
+</section>
+`;
