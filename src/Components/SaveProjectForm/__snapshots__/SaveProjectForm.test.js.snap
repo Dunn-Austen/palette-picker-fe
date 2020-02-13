@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SaveProjectForm should match the snapshot 1`] = `
+<section
+  className="form-section"
+>
+  <form
+    className="project-form"
+  >
+    <div
+      className="input-container"
+    >
+      <label
+        htmlFor="project-input"
+      >
+        Create a project: 
+      </label>
+      <input
+        className=""
+        id="project-input"
+        onChange={[Function]}
+        placeholder="Kitchen Themes"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="post-project"
+      onClick={[Function]}
+      type="button"
+    >
+      Create Project
+    </button>
+  </form>
+</section>
+`;
