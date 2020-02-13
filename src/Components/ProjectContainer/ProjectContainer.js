@@ -28,3 +28,10 @@ const ProjectContainer = ({projects, updateProjects, paletteColors, setPaletteCo
 }
 
 export default ProjectContainer;
+
+ProjectContainer.propTypes = {
+  projects: PropTypes.array,
+  updateProjects: PropTypes.func,
+  paletteColors: PropTypes.object,
+  setPaletteColors: PropTypes.object
+}

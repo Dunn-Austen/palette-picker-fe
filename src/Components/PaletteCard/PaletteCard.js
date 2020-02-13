@@ -123,3 +123,18 @@ const PaletteCard = ({updateProjects, projects, id, title, project_id, color_1_i
 }
 
 export default PaletteCard;
+
+PaletteCard.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.number,
+  project_id: PropTypes.number,
+  color_1_id: PropTypes.string,
+  color_2_id: PropTypes.string,
+  color_3_id: PropTypes.string,
+  color_4_id: PropTypes.string,
+  color_5_id: PropTypes.string,
+  projects: PropTypes.array,
+  updateProjects: PropTypes.func,
+  paletteColors: PropTypes.object,
+  setPaletteColors: PropTypes.object
+}

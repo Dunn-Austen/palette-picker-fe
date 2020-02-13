@@ -116,3 +116,12 @@ const ProjectCard = ({title, id, palettes, updateProjects, projects, paletteColo
 }
 
 export default ProjectCard;
+
+ProjectCard.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.number,
+  projects: PropTypes.array,
+  updateProjects: PropTypes.func,
+  paletteColors: PropTypes.object,
+  setPaletteColors: PropTypes.object
+}

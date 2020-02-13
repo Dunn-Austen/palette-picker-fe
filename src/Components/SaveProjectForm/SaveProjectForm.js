@@ -56,5 +56,5 @@ export default SaveProjectForm;
 
 SaveProjectForm.propTypes = {
   projects: PropTypes.array,
-  setProjects: PropTypes.func
+  addProject: PropTypes.func
 }

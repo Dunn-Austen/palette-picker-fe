@@ -103,7 +103,6 @@ const App = () => {
           setPaletteColors={{setPaletteColor_1, setPaletteColor_2, setPaletteColor_3, setPaletteColor_4, setPaletteColor_5}}
         />
       </section>
-
     </main>
   );
 }
