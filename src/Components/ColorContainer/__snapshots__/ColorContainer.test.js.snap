@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+<section
+  className="color-container"
+>
+  <ColorCard
+    hexCode="#444443"
+    isSaved={false}
+    key="0"
+  />
+  <ColorCard
+    hexCode="#444443"
+    isSaved={false}
+    key="1"
+  />
+  <ColorCard
+    hexCode="#444443"
+    isSaved={false}
+    key="2"
+  />
+  <ColorCard
+    hexCode="#444443"
+    isSaved={false}
+    key="3"
+  />
+  <ColorCard
+    hexCode="#444443"
+    isSaved={false}
+    key="4"
+  />
+</section>
+`;
