@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProjectCard.css';
 import PropTypes from 'prop-types';
 import PaletteCard from '../PaletteCard/PaletteCard';
 import { deleteProject, fetchAllProjects, fetchAllPalettes } from '../../apiCalls';
 
 const ProjectCard = ({title, id, palettes, updateProjects, projects}) => {
+
+  let [editStatus, setEditStatus] = useState(false);
+  let [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
   const displayPaletteCards = palettes.map((palette, index) => {
     return (
@@ -51,12 +58,29 @@ const ProjectCard = ({title, id, palettes, updateProjects, projects}) => {
   return (
     <section className='project-card'>
       <header>
-        <button className='edit-title'>
-          Edit Title
-        </button>
-        <h1 className='project-title'>
-          {title}
-        </h1>
+        {!editStatus &&
+          <button className='edit-title' onClick={() => setEditStatus(true)}>
+            Edit Title
+          </button>
+        }
+        {editStatus &&
+          <button className='save-title' onClick={() => setEditStatus(false)}>
+            Save Title
+          </button>
+        }
+        {!editStatus &&
+          <h1 className='project-title'>
+            {title}
+          </h1>
+        }
+        {editStatus &&
+          <input className='title-input'
+            type='text'
+            placeholder='New Title'
+            onChange={handleInputChange}
+            value={inputValue}
+            />
+        }
         <button data-id={id} className='delete-project' onClick={removeProject}>
           Delete Project
         </button>

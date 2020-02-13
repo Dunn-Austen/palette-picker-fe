@@ -9,7 +9,7 @@
   justify-content: center;
   margin-top: 10px;
   overflow: scroll;
-  width: 40%;
+  width: 60%;
 }
 
 .palettes-section {
@@ -37,4 +37,9 @@ header {
 }
 
 .edit-title {
+}
+
+.title-input {
+  text-align: center;
+  width: 30%;
 }
