@@ -1,6 +1,6 @@
 # Palette Picker
 
-**Please see the following for original project Project Board & PR dialogue**
+**Please see the following for original Project Board & PR dialogue**
 - https://github.com/Dustin-Mikusko/palette-picker-be
 
 #### Dev Team:
